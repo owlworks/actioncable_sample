@@ -1,0 +1,49 @@
+<p>
+  <strong>Turn:</strong>
+  <%= game.player_in_turn&.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= game.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= game.status %>
+</p>
+
+<p>
+  <strong>First player( ⚫ ):</strong>
+  <%= game.first_player&.email %>
+</p>
+
+<p>
+  <strong>second player( ⚪  ):</strong>
+  <%= game.second_player&.email %>
+</p>
+
+<% unless game.closed? %>
+  <% if game.joined?(current_user) %>
+    <input type="button" value="離脱" onclick="App.game.quit();">
+  <% else %>
+    <input type="button" value="参加" onclick="App.game.join();">
+  <% end %>
+<% end %>
+
+<br/><br/>
+<table id="board">
+  <% game.board_info['board'].each_with_index do |row, y| %>
+  <tr>
+    <% row.each_with_index do |piece, x| %>
+    <th>
+      <%= raw stone_view(piece, y, x, current_user == game.player_in_turn) %>
+    </th>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+<br/>
+<% if game.reload.player_in_turn == current_user %>
+  <input type="button" value="石を置く" onclick="App.game.put_stone($('input[name=new_stone]:checked').val());">
+<% end %>

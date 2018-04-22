@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  board_info: MyText
+  status: 1
+  first_player: 1
+  second_player: 1
+
+two:
+  name: MyString
+  board_info: MyText
+  status: 1
+  first_player: 1
+  second_player: 1

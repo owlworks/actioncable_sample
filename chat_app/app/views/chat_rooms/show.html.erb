@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @chat_room.name %>
+</p>
+
+<input type="text" id="message_form" size="30" maxlength="30">
+<input type="button" value="Post" onclick="App.chat_room.post_message($('#message_form').val());">
+
+<div id="messages">
+  <% @recently_messages.each do |message| %>
+    <p><%= message.body %></p>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_chat_room_path(@chat_room) %> |
+<%= link_to 'Back', chat_rooms_path %>

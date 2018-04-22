@@ -1,0 +1,31 @@
+table#board {
+  border-collapse: collapse;
+  border: solid 5px black;
+  background: #134E5E;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+table#board th, table#board td {
+  border: solid 1px white;
+}
+
+table#board th {
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
+}
+
+.radio {
+  display: none;
+}
+.radio + .radio-icon:before {
+  content: "\f3a6";
+  font-size: 22px;
+  opacity: 0;
+}
+.radio:checked + .radio-icon:before {
+  content: "\f3a7";
+  color: red;
+  opacity: 1;
+}
